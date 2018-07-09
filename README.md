@@ -8,7 +8,7 @@ way to include the work in my projects.
 
 `composer require joe-pritchard/laravel-twitter-text-formatter`
 
-**Configuration**
+## Configuration ##
 
 To override the default display templates, publish and modify the config file:
 
@@ -23,15 +23,15 @@ The following config options can be then changed ne changed in `config/twitter-f
   - _user_mention_link_template_ (defaults to `<a href="{{user_mention_link}}" rel="nofollow" target="_blank" title="{{user_mention_title}}">@{{user_mention_text}}</a>`)
   - _media_link_template_ (defaults to `<a href="{{media_link}}" rel="nofollow" target="_blank" title="{{media_title}}">{{media_text}}</a>`) 
 
-**Usage**
+## Usage ##
 
-***In Controllers/Classes***
+### In Controllers/Classes ###
 
 Just call `JoePritchard\TwitterTextFormatter\Formatter::format()` on the tweet you'd like to format. 
 The format method takes one argument, which is a tweet as returned by the twitter API. For more details on how to retrieve
 that, head to the official API docs or take a look at [this article](http://blog.netgloo.com/2015/08/16/php-getting-latest-tweets-and-displaying-them-in-html/), 
 which is where I first encountered Andrea Zanelli's work before deciding to roll it into this package.
 
-***In Views***
+### In Views ###
 
 In blade files etc it may be more convenient to use the helper method: `{!! twitter_format($tweet) !!}` 
