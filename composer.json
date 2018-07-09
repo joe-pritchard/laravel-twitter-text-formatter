@@ -23,7 +23,8 @@
   "require-dev": {
   },
   "autoload": {
-    "psr-4": {"JoePritchard\\LaravelTwitterTextFormatter\\": "src/"}
+    "psr-4": {"JoePritchard\\LaravelTwitterTextFormatter\\": "src/"},
+    "files": ["helper.php"]
   },
   "extra": {
     "laravel": {
