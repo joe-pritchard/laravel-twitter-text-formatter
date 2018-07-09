@@ -6,7 +6,6 @@ declare(strict_types=1);
  *
  * @project  laravel-twitter-text-formatter
  * @author   Andrea Zanelli <andreazanelli5@gmail.com>
- * @author   Joe Pritchard <joe@joe-pritchard.uk>
  *
  * Created:  09/07/18 17:17
  *
@@ -28,7 +27,7 @@ class Formatter
      * @param $configs (Array)
      * @return (String)
      */
-    public static function format(\stdClass $tweet): string
+    public static function format($tweet): string
     {
         // Is retweeted?
         if (isset($tweet->retweeted_status)) {
@@ -46,12 +45,12 @@ class Formatter
             }
 
             // Return the parsed re-tweet
-            $res = self::parseTweetText($tweet->retweeted_status);
+            $res = self::parse_tweet_text($tweet->retweeted_status);
             return $res . $retweeted_by;
         }
 
         // Return the parsed tweet
-        return self::parseTweetText($tweet);
+        return self::parse_tweet_text($tweet);
     }
 
     /**
@@ -60,11 +59,11 @@ class Formatter
      * Credits: this function is a modified version of the one from Jacob
      * Emerick's Blog (http://goo.gl/lhu8Ix)
      *
-     * @param \stdClass $tweet
+     * @param $tweet
      *
      * @return string
      */
-    private static function parseTweetText(\stdClass $tweet): string
+    private static function parse_tweet_text($tweet): string
     {
         // Collects the set of entities
         $entity_holder = [];
@@ -81,7 +80,7 @@ class Formatter
                     [$hashtag_link, $hashtag->text],
                     $template
                 );
-                self::addEntity($entity_holder, $hashtag, $replace);
+                self::add_entity($entity_holder, $hashtag, $replace);
             }
         }
 
@@ -95,7 +94,7 @@ class Formatter
                     $template
                 );
 
-                self::addEntity($entity_holder, $url, $replace);
+                self::add_entity($entity_holder, $url, $replace);
             }
         }
 
@@ -111,8 +110,7 @@ class Formatter
                     [$user_mention_link, $user_mention->name, $user_mention->screen_name],
                     $template
                 );
-
-                self::addEntity($entity_holder, $user_mention, $replace);
+                self::add_entity($entity_holder, $user_mention, $replace);
             }
         }
 
@@ -125,8 +123,7 @@ class Formatter
                     [$media->url, $media->expanded_url, $media->display_url],
                     $template
                 );
-
-                self::addEntity($entity_holder, $media, $replace);
+                self::add_entity($entity_holder, $media, $replace);
             }
         }
 
@@ -137,7 +134,7 @@ class Formatter
         $text = $tweet->text;
 
         foreach ($entity_holder as $entity) {
-            $text = self::mbSubStrReplace(
+            $text = self::mb_substr_replace(
                 $text,
                 $entity->replace,
                 $entity->start,
@@ -152,11 +149,11 @@ class Formatter
     /**
      * Add an entity to the entity_holder.
      *
-     * @param array     $entity_holder
-     * @param \stdClass $tweet_entity
-     * @param string    $replace
+     * @param $entity_holder
+     * @param $tweet_entity
+     * @param $replace
      */
-    private static function addEntity(array &$entity_holder, \stdClass $tweet_entity, string $replace): void
+    private static function add_entity(array &$entity_holder, \stdClass $tweet_entity, string $replace): void
     {
         $entity = new \stdClass();
         $entity->start = $tweet_entity->indices[0];
@@ -177,13 +174,7 @@ class Formatter
      *
      * @return string
      */
-    private static function mbSubStrReplace(
-        string $string,
-        string $replacement,
-        int $start,
-        int $length = null,
-        string $encoding = null
-    ): string
+    private static function mb_substr_replace(string $string, string $replacement, int $start, int $length = null, string $encoding = null): string
     {
         $strlen = mb_strlen($string, $encoding);
         $first_piece = mb_substr($string, 0, $start, $encoding) . $replacement;
