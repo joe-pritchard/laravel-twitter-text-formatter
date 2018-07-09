@@ -6,6 +6,7 @@ declare(strict_types=1);
  *
  * @project  laravel-twitter-text-formatter
  * @author   Andrea Zanelli <andreazanelli5@gmail.com>
+ * @author   Joe Pritchard <joe@joe-pritchard.uk>
  *
  * Created:  09/07/18 17:17
  *
