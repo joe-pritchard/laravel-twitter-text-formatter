@@ -12,9 +12,9 @@ way to include the work in my projects.
 
 To override the default display templates, publish and modify the config file:
 
-`php artisan vendor:publish --provider=JoePritchard\\JDF\\Providers\\ServiceProvider`   
+`php artisan vendor:publish --provider=JoePritchard\\LaravelTwitterTextFormatter\\Providers\\ServiceProvider`   
 
-The following config options can be changed:
+The following config options can be then changed ne changed in `config/twitter-formatter.php`:
 
   - _show_retweeted_by_ (Control whether or not to show the "retweeted by..." text below retweets that appear in your timeline. Defaults to `true`)
   - _retweeted_by_template_ (The template that should be used to display the "retweeted by..." section. Defaults to `<em> Retweeted by {{user_name}}</em>`)
