@@ -1,0 +1,36 @@
+{
+  "name": "joe-pritchard/laravel-twitter-text-formatter",
+  "description": "Based on https://github.com/netgloo/php-samples/tree/master/php-twitter-text-formatter - Provides a wrapper around the text twiter text formatter",
+  "type": "library",
+  "keywords": ["Twitter", "Parser", "Formatter", "HTML", "laravel-5-package"],
+  "homepage": "https://github.com/joe-pritchard/laravel-twitter-text-formatter",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Joe Pritchard",
+      "email": "joe@joe-pritchard.uk",
+      "homepage": "https://joe-pritchard.uk"
+    }
+  ],
+  "support": {
+    "issues": "https://bitbucker.org/joe-pritchard/laravel-twitter-text-formatter/issues",
+    "source": "https://bitbucket.org/joe-pritchard/laravel-twitter-text-formatter"
+  },
+  "require": {
+    "php": "^7.0",
+    "laravel/framework": "^5.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {"JoePritchard\\LaravelTwitterTextFormatter\\": "src/"}
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "JoePritchard\\LaravelTwitterTextFormatter\\Providers\\ServiceProvider"
+      ]
+    }
+  }
+}
+
